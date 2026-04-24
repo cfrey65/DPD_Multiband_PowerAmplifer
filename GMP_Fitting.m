@@ -7,12 +7,12 @@ coeff = [];
 RMSin = -20.5;
 y = RFWebLab_IMS2026_PA_meas_v1_1(x(1:1000), RMSin);
 
-for i = 1:(10+mem+l+1)
+for i = (mem+l+1):(10+mem+l+1)
     row = [];
     for m = 1:mem
         for d = 1:deg
             inp = i-m;
-            row(end+1) = y(inp+mem+)*abs(y(inp))^d;
+            row(end+1) = y(inp)*abs(y(inp))^d;
             for j = 1:l 
               row(end+1) = y(inp)*abs(y(inp-j))^d;
               row(end+1) = y(inp)*abs(y(inp+j))^d;
@@ -23,8 +23,8 @@ for i = 1:(10+mem+l+1)
 
 end
 coeff
-pa = resize(y(1:10), [10, 1]);
-size(y(1:10))
+pa = resize(y(1:10), [11, 1]);
+size(pa)
 size(coeff)
 targ = pa\coeff
 %DO gmp/target to calculate coeff
