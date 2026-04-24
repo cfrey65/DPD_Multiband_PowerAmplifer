@@ -1,0 +1,20 @@
+mem = 2;
+l_shift = 2;
+deg = 2;
+
+main = 0;
+for m = 1:mem
+    for d = 1:deg
+        main = main + a(m, d)*x(t-m)*abs(x(t-m))^d;
+    end
+end
+
+cross = 0;
+for d = 1:deg
+    for m = 1:mem
+        for l = 1:l_shift
+            cross = cross + b(d, m, l)*x(t-m)*abs(x(t-m-l))^d;
+            cross = cross + c(d, m, l)*x(t-m)*abs(x(t-m+l))^d;
+        end
+    end
+end
