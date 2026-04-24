@@ -23,9 +23,8 @@ for i = (mem+l+1):(10+mem+l+1)
 
 end
 coeff
-pa = resize(y(1:11), [11, 1]);
+pa = y(1:11)';
+pa
 size(pa)
 size(coeff)
 targ = pa\coeff
-targ = pa\coeff
-%DO gmp/target to calculate coeff
